@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<!--
+  Copyright (c) 2015, <your name>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="scaffolded-by" content="https://github.com/google/stagehand">
+  <title>polytasksdart</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- example of using a paper element -->
+  <link rel="import" href="elements.html">
+  <link rel="import" href="packages/polymer_elements/roboto.html">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body unresolved>
+<span id="browser-sync-binding"></span>
+<template is="dom-bind" id="app">
+
+  <paper-drawer-panel id="paperDrawerPanel">
+    <!-- Drawer Scroll Header Panel -->
+    <paper-scroll-header-panel drawer fixed>
+
+      <!-- Drawer Toolbar -->
+      <paper-toolbar id="drawerToolbar">
+        <span class="paper-font-title">Menu</span>
+      </paper-toolbar>
+
+      <!-- Drawer Content -->
+      <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
+        <a data-route="home" href="/">
+          <iron-icon icon="home"></iron-icon>
+          <span>Home</span>
+        </a>
+
+        <a data-route="about" href="/about">
+          <iron-icon icon="info"></iron-icon>
+          <span>About</span>
+        </a>
+
+        <a data-route="contact" href="/contact">
+          <iron-icon icon="mail"></iron-icon>
+          <span>Contact</span>
+        </a>
+      </paper-menu>
+    </paper-scroll-header-panel>
+
+    <!-- Main Area -->
+    <paper-scroll-header-panel main condenses keep-condensed-header>
+
+      <!-- Main Toolbar -->
+      <paper-toolbar id="mainToolbar" class="tall">
+        <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+        <span class="flex"></span>
+
+        <!-- Toolbar icons -->
+        <paper-icon-button icon="refresh"></paper-icon-button>
+        <paper-icon-button icon="search"></paper-icon-button>
+
+        <!-- Application name -->
+        <div class="middle middle-container center horizontal layout">
+          <div class="app-name">Days</div>
+        </div>
+
+        <!-- Application sub title -->
+        <div class="bottom bottom-container center horizontal layout">
+          <div class="bottom-title paper-font-subhead">The future of the web today</div>
+        </div>
+
+      </paper-toolbar>
+
+      <!-- Main Content -->
+      <div class="content">
+        <iron-pages attr-for-selected="data-route" selected="{{route}}">
+
+          <section data-route="home">
+            <new-task></new-task>
+            <list-tasks></list-tasks>
+          </section>
+
+          <section data-route="about">
+            <paper-material elevation="1">
+              <h2 class="paper-font-display2">About</h2>
+              <p>A minimal task planner</p>
+              <!--<a href="/about">About</a>-->
+            </paper-material>
+          </section>
+
+
+          <section data-route="contact">
+            <paper-material elevation="1">
+              <h2 class="paper-font-display2">Contact</h2>
+              <p>This is the contact section</p>
+            </paper-material>
+          </section>
+
+        </iron-pages>
+      </div>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+
+
+  <main-app></main-app>
+
+</template>
+  <script type="application/dart" src="index.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>
