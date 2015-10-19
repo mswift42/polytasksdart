@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body unresolved>
+<body unresolved class="fullbleed vertical layout">
 <span id="browser-sync-binding"></span>
 <template is="dom-bind" id="app">
 
@@ -95,8 +95,7 @@
         <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
           <section data-route="home">
-            <new-task></new-task>
-            <list-tasks></list-tasks>
+            <main-app></main-app>
           </section>
 
           <section data-route="about">
@@ -119,9 +118,6 @@
       </div>
     </paper-scroll-header-panel>
   </paper-drawer-panel>
-
-
-  <main-app></main-app>
 
 </template>
   <script type="application/dart" src="index.dart"></script>
