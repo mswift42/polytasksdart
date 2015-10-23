@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<dom-module id="list-task">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .summarycard {
+                padding:2em;
+                margin-left: 3vw;
+            }
+            paper-dialog {
+                padding:2em;
+            }
+            paper-checkbox {
+                display: inline-block;
+                margin: 5px 0;
+                transition: opacity 0.3s;
+            }
 
-</body>
-</html>
+            paper-checkbox[checked] ~ span{
+                opacity: 0.5;
+            }
+            paper-icon-button {
+                position:absolute;
+                bottom:-2px;
+                left:-2px;
+                opacity:0.1;
+            }
+            paper-icon-button:hover{
+                opacity:1;
+            }
+        </style>
+        <iron-ajax url="[[deleteUrl]]" method="delete" id="ajaxdelete"
+                   handle-as="json"
+                   on-response="handleResponse" ></iron-ajax>
+        <iron-ajax url="/api/tasks/" method="put" id="ajaxupdate"
+                   handle-as="json" ></iron-ajax>
+        <paper-dialog id="deletedialog" >
+            <h2 style="text-align:center">Really Delete?</h2>
+      <span class="dialogbuttons">
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button dialog-confirm on-click="deleteItem">Delete</paper-button>
+      </span>
+        </paper-dialog>
+        <paper-material elevation="1" class="summarycard">
+            <template is="dom-if" if="{{!editing}}">
+                <paper-checkbox on-change="toggleItem"
+                                checked="{{done}}">
+                </paper-checkbox>
+                <span id="tsummary" on-dblclick="editItem">[[summary]]</span>
+                <paper-icon-button icon="delete"
+                                   on-click="deleteRequest">
+                </paper-icon-button>
+            </template>
+            <template is="dom-if" if="{{editing}}">
+                <paper-input  value="{{summary}}" on-keyup="editTask" on-blur="blurAction"
+                              id="editSummary"></paper-input>
+            </template>
+        </paper-material>
+    </template>
+</dom-module>
