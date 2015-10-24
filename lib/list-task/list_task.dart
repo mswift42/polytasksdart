@@ -9,3 +9,8 @@ import 'package:polymer_elements/paper_checkbox.dart';
 import 'package:polymer_elements/paper_icon_button.dart';
 import 'package:polymer/polymer.dart';
 import 'package:web_components/web_components.dart';
+
+@PolymerRegister('list-task')
+class ListTask extends PolymerElement {
+  ListTask.created() : super.created();
+}
