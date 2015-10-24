@@ -1,0 +1,20 @@
+<dom-module id="list-tasks">
+    <template>
+        <style>
+            :host {
+                display: block;
+                margin-top:5vh;
+            }
+        </style>
+        <!--<iron-ajax url="/api/tasks/" method="get" id="ajaxget"-->
+                   <!--handle-as="json"-->
+                   <!--on-response="handleResponse" auto></iron-ajax>-->
+        <div class="layout horizontal wrap">
+            <template is="dom-repeat" id="listtasks" items="{{tasklist}}">
+                <div>
+                    <list-task taskid="{{item.id}}" id="{{item.id}}" summary="{{item.summary}}" done="{{item.done}}"></list-task>
+                </div>
+            </template>
+        </div>
+    </template>
+</dom-module>
